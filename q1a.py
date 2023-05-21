@@ -17,9 +17,6 @@ def q3(a):
     
 def check(qq):
     newqq = qq
-    while type(newqq) != str:
-        newqq = str(input("Escolha uma string"))
-    
     states = 0    
     terminal = True
 
@@ -27,14 +24,12 @@ def check(qq):
         return terminal
     
     if q1(newqq[states]) == True:
-        print(terminal)
         states += 1
         if states == len(newqq):
             return terminal
         
     else:
         terminal = False
-        print(terminal)
         return terminal
     
     if q2(newqq[states]) == True:
@@ -56,10 +51,4 @@ def check(qq):
     
     return terminal
 
-print(check("abbbbccc"))
-                
-                    
-                
-    
-    
-
+print(check("dddddddddd"))

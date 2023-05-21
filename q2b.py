@@ -11,13 +11,8 @@ def q0q1q4(a,i):
     if(a[i] == "b" or a[i] == "c"):
         return True
         
-   
-       
 def check(qq):
     newqq = qq
-    while type(newqq) != str:
-        newqq = str(input("Escolha uma string"))
-    
     states = 0    
     terminal = True
 
@@ -30,7 +25,6 @@ def check(qq):
                 while states < len(newqq)-1:
                     states += 1
                     if newqq[states] != "b" and newqq[states] != "c":
-                        #print("aq")
                         return False
             else:
                 return False           
@@ -46,10 +40,5 @@ def check(qq):
             return False
     else:
         return False
-    
-  #  if q0q1q2q3(newqq,states) == True:
-   #     return False
-  #  else:
-   #     return True
 
-print(check("abababab"))
+print(check("dddd"))
