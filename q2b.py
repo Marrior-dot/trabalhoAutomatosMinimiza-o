@@ -9,7 +9,8 @@ def q0q1q2q3(a,i):
         return False
 def q0q1q4(a,i): 
     if(a[i] == "b" or a[i] == "c"):
-        return True    
+        return True
+        
    
        
 def check(qq):
@@ -21,12 +22,18 @@ def check(qq):
     terminal = True
 
     if q0q1q2q3(newqq,states) == True:
-        if q0q1q4(newqq,states) == True:
-            while newqq[states] == "b" or newqq[states] == "c":
-                states += 1
-            if newqq[states] != "b" or newqq[states] != "c" or newqq[states] !="a":
-                    return False
-            return terminal
+        states = 3
+        if(len(newqq)) == 3:
+            return True
+        else:
+            if q0q1q4(newqq,states) == True:
+                while states < len(newqq)-1:
+                    states += 1
+                    if newqq[states] != "b" and newqq[states] != "c":
+                        #print("aq")
+                        return False
+            else:
+                return False           
     else:
         pass
     
@@ -34,22 +41,15 @@ def check(qq):
         while newqq[states] == "b" or newqq[states] == "c":
             states += 1
         if q0q1q2q3(newqq,states) == True:
-            return terminal
+            return True
         else:
             return False
     else:
-        pass
+        return False
     
-    #if q0q1q2q3(newqq,states) == False:
-    #    return False
-        
-    '''else:
-        terminal = False
-        print(terminal)
-        return terminal
-    
-    if q0q1q4(newqq,states) == True:
-        while(newqq[states] == "b" or newqq[states] == "c"):
-            states += 1 '''
+  #  if q0q1q2q3(newqq,states) == True:
+   #     return False
+  #  else:
+   #     return True
 
-print(check("bccccccbcbcaaa"))
+print(check("abababab"))
