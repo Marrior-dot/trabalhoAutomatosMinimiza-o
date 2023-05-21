@@ -7,22 +7,11 @@ def q0q1q2q3(a,i):
                 return True
     else:
         return False
-'''    
-def q1(a):
-    if a == "a":
-        return True
-    else:
-        return False
-    
-def q2(a):
-    if a == "a": 
-        return True
-    else:
-        return False
-def q3(a):
-    if a == "c" or a == "b":
-        return True
-'''    
+def q0q1q4(a,i): 
+    if(a[i] == "b" or a[i] == "c"):
+        return True    
+   
+       
 def check(qq):
     newqq = qq
     while type(newqq) != str:
@@ -31,29 +20,36 @@ def check(qq):
     states = 0    
     terminal = True
 
-    if q0q1q2q3(newqq[states]) == True:
-        print(terminal)
-        states += 1
-    else:
-        terminal = False
-        print(terminal)
-        return terminal
-'''    
-    if q2(newqq[states]) == True:
-            states += 1
-    else:
-        terminal = False
-        return terminal
-    
-    if q3(newqq[states]) == True:
-        while(newqq[states] == "c"):
-            states += 1
-            if states == len(newqq):
-                return terminal
-        
+    if q0q1q2q3(newqq,states) == True:
+        if q0q1q4(newqq,states) == True:
+            while newqq[states] == "b" or newqq[states] == "c":
+                states += 1
+            if newqq[states] != "b" or newqq[states] != "c" or newqq[states] !="a":
+                    return False
+            return terminal
     else:
         pass
     
-    return terminal
-'''
-print(check("aaa"))
+    if q0q1q4(newqq,states) == True:
+        while newqq[states] == "b" or newqq[states] == "c":
+            states += 1
+        if q0q1q2q3(newqq,states) == True:
+            return terminal
+        else:
+            return False
+    else:
+        pass
+    
+    #if q0q1q2q3(newqq,states) == False:
+    #    return False
+        
+    '''else:
+        terminal = False
+        print(terminal)
+        return terminal
+    
+    if q0q1q4(newqq,states) == True:
+        while(newqq[states] == "b" or newqq[states] == "c"):
+            states += 1 '''
+
+print(check("bccccccbcbcaaa"))
