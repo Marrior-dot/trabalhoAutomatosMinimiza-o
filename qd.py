@@ -17,69 +17,94 @@ def check(qq):
     states = 0
     
     if transicao_a(newqq,states) == True:
-        print("q0 --> q1")
+        print("q0 --> q1, a")
         if states == len(newqq) - 1:
                 return True
         if newqq[states + 1] != "a" and newqq[states + 1] != "b":
-            print("q1 --> q3")
+            states += 1
+            print("q1 --> q3, c")
             if transicao_c(newqq,states) == True:
-                print("q1 --> q3")
+                #print("q1 --> q3, c")
                 while states < len(newqq) - 1:
-                    print("q3")
+                    print("q3, c")
                 if newqq[states] != "c":
                     return False
                 states += 1
             return True
-        print("q1 --> q2")
+        states += 1
+        print("q1 --> q2, a")
+        states += 1
         while newqq[states] == "a":
-            if states == len(newqq) - 1:
-                return True
-            print("q2")
             states += 1
+            if states == len(newqq):
+                return True
+            print("q2, a")
         if transicao_c(newqq,states) == True:
-            print("q2 --> q3")
+            print("q2 --> q3, c")
+            #states += 1
             while states < len(newqq) - 1:
-                print("q3")
+                states += 1
                 if newqq[states] != "c":
                     return False
-                states += 1
+                print("q3, c")
             return True
     
     if transicao_b(newqq, states) == True:
         if (newqq[states-1] + newqq[states-2]) == "aa":
-            print("q2 --> q4")
+            print("q2 --> q4, b")
+            states += 1
         elif newqq[states-1] == "a":
-            print("q1 --> q4")
+            print("q1 --> q4, b")
+            states += 1
         else:
-            print("q0 --> q4")
+            print("q0 --> q4, b")
+            states += 1
         while newqq[states] == "b" and states < len(newqq) - 1:
-            print("q4")
+            print("q4, b")
             states += 1
     
     if transicao_a(newqq,states) == True and states >= 0:
-        print("q4 --> q5")
+        print("q4 --> q5, a")
+        states += 1
         if transicao_c(newqq,states) == True:
-            print("q5-->q3")
+            print("q5-->q3, c")
             while states < len(newqq) - 1:
-                print("q3")
+                print("q3, c")
                 if newqq[states] != "c":
                     return False
+                states += 1
+                
         return True
     else:
         return False
-#teste1
+    
+print("teste 1 - aaaaa")
 print(check("aaaaa"))
-#teste2
+print("\n")
+
+print("teste 2 - ac")
 print(check("ac"))
-#teste3
+print("\n")
+
+print("teste 3 - aaaac")
 print(check("aaaac"))
-#teste4
+print("\n")
+
+print("teste 4 - aaaabbbbacccc")
 print(check("aaaabbbbacccc"))
-#teste5
+print("\n")
+
+print("teste 5 - bbbbbac")
 print(check("bbbbbac"))
-#teste6
+print("\n")
+
+print("teste 6 - bbbb")
 print(check("bbbb"))
-#teste7
+print("\n")
+
+print("teste 7 - abbbbb")
 print(check("abbbbb"))
-#teste8
+print("\n")
+
+print("teste 8 - abbbbbcccccc")
 print(check("abbbbbcccccc"))

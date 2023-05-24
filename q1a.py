@@ -25,11 +25,11 @@ def check(qq):
     terminal = True
 
     if(cadeia_vazia(newqq) == True) :
-        print("q0")
+        print("q0,e")
         return terminal
     
     if transicao_a(newqq[states]) == True :
-        print("q0 --> q1")
+        print("q0 --> q1, a")
         if states == len(newqq)-1:
             return terminal
         states += 1
@@ -41,41 +41,65 @@ def check(qq):
         return terminal
     
     if transicao_b(newqq[states]) == True:
-        print("q1 --> q2")
+        print("q1 --> q2, b")
+        states += 1
         while newqq[states] == "b":
-            print("q2")
-            states += 1
-            if states == len(newqq):
+            print("q2, b")
+            if states == len(newqq)-1:
                 return terminal
-    else:
-        pass
+            states += 1
+        if newqq[states] != "c":
+            return False
+                     
     if transicao_c(newqq[states]) == True:
         if newqq[states-1] == "a":
-            print("q1 --> q3")
+            print("q1 --> q3, c")
         else:
-            print("q2 --> q3")
-        while(newqq[states] == "c"):
+            print("q2 --> q3, c")
+        while newqq[states] == "c":
+            print("q3, c")
             states += 1
-            print("q3")
-            if states == len(newqq):
+            if states == len(newqq)-1:
                 return terminal
+        if newqq[states] != "c":
+            return False
+            
     else:
-        pass
-    
+      pass
     return terminal
 
-#teste1
-print(check(""))
-#teste2
-print(check("a"))
-#teste3
-print(check("acccc"))
-#teste4
-print(check("abbcccc"))
-#teste5
-print(check("abbbb"))
-#teste6
-print(check("bbbbb"))
-#teste7
-print(check("cccccc"))
+print("teste 1 - ''")
+print(check(" "))
+print("\n")
 
+print("teste 2 - a")
+print(check("a"))
+print("\n")
+
+print("teste 3 - acccc")
+print(check("acccc"))
+print("\n")
+
+print("teste 4 - abbcccc")
+print(check("abbcccc"))
+print("\n")
+
+print("teste 5 - abbbb")
+print(check("abbbb"))
+print("\n")
+
+print("teste 6 - bbbbb")
+print(check("bbbbb"))
+print("\n")
+
+print("teste 7 - cccccc") 
+print(check("cccccc"))
+print("\n")
+
+print("teste 8 - abababab")
+print(check("abababab"))
+print("\n")
+
+print("teste 9 - abbbccbcbc")
+print(check("abbbccbcbc"))
+print("\n")
